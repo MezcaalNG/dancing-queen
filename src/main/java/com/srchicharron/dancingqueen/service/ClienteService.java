@@ -1,6 +1,8 @@
 package com.srchicharron.dancingqueen.service;
 
+import com.srchicharron.dancingqueen.model.Cita;
 import com.srchicharron.dancingqueen.model.Cliente;
+import com.srchicharron.dancingqueen.model.ResponseModel;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +12,9 @@ public interface ClienteService {
 
     Optional<Cliente> findClienteById(int id);
 
-    void addCliente(Cliente cliente);
+    ResponseModel addCliente(Cliente cliente);
 
-    void updateCliente(int id, Cliente cliente);
+    ResponseModel updateCita(Cliente cliente);
 
-    void deleteCliente(int id);
+    ResponseModel deleteCita(int id);
 }
