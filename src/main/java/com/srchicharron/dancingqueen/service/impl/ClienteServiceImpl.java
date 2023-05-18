@@ -1,6 +1,8 @@
 package com.srchicharron.dancingqueen.service.impl;
 
+import com.srchicharron.dancingqueen.model.Cita;
 import com.srchicharron.dancingqueen.model.Cliente;
+import com.srchicharron.dancingqueen.model.ResponseModel;
 import com.srchicharron.dancingqueen.repository.ClienteRepository;
 import com.srchicharron.dancingqueen.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +33,41 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public void addCliente(Cliente cliente) {
-
+    public ResponseModel addCliente(Cliente cliente) {
+        ResponseModel response = new ResponseModel();
+        try{
+            Cliente savedCliente = clienteRepository.save(cliente);
+            response.setReturnCode(0);
+        }catch(Exception e){
+            response.setReturnCode(1);
+        }
+        return response;
     }
 
     @Override
-    public void updateCliente(int id, Cliente cliente) {
-
+    public ResponseModel updateCita(Cliente cliente) {
+        ResponseModel response = new ResponseModel();
+        try{
+            Cliente savedCliente = clienteRepository.save(cliente);
+            response.setReturnCode(0);
+        }catch(Exception e){
+            response.setReturnCode(1);
+        }
+        return response;
     }
 
     @Override
-    public void deleteCliente(int id) {
-
+    public ResponseModel deleteCita(int id) {
+        ResponseModel responseUpdate = new ResponseModel();
+        try{
+            clienteRepository.deleteById(id);
+            responseUpdate.setReturnCode(0);
+        }catch(Exception e){
+            System.out.println(e);
+            responseUpdate.setReturnCode(1);
+        }
+        return responseUpdate;
     }
+
+
 }
